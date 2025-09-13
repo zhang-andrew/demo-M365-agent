@@ -1,0 +1,100 @@
+name: Deploy Azure Bot
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Deployment/template.json'
+      - 'Deployment/parameters.json'
+      - '.github/workflows/deploy-azure-bot.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual trigger
+
+env:
+  AZURE_RESOURCE_GROUP: 'demo-M365-agent-RG'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate ARM Template
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Validate ARM Template
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+        template: ./Deployment/template.json
+        parameters: ./Deployment/parameters.json
+        deploymentMode: Validate
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: validate
+    name: Deploy Azure Bot
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Deploy ARM Template
+      uses: azure/arm-deploy@v1
+      id: deploy
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+        template: ./Deployment/template.json
+        parameters: ./Deployment/parameters.json
+        deploymentName: 'bot-deployment-${{ github.run_number }}'
+        
+    - name: Get Deployment Outputs
+      run: |
+        echo "Deployment completed successfully!"
+        echo "Resource Group: ${{ env.AZURE_RESOURCE_GROUP }}"
+        echo "Deployment Name: bot-deployment-${{ github.run_number }}"
+        
+    - name: Post deployment validation
+      run: |
+        # Check if bot service was created
+        BOT_EXISTS=$(az bot show --name demo-M365-agent-bot --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query "name" -o tsv 2>/dev/null || echo "")
+        if [ -n "$BOT_EXISTS" ]; then
+          echo "? Bot service created successfully: $BOT_EXISTS"
+        else
+          echo "? Bot service not found"
+          exit 1
+        fi
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [deploy]
+    if: always()
+    name: Notify Deployment Status
+    
+    steps:
+    - name: Deployment Success
+      if: needs.deploy.result == 'success'
+      run: |
+        echo "?? Azure Bot deployed successfully!"
+        echo "Resource Group: ${{ env.AZURE_RESOURCE_GROUP }}"
+        
+    - name: Deployment Failed  
+      if: needs.deploy.result == 'failure'
+      run: |
+        echo "?? Azure Bot deployment failed!"
+        echo "Check the deployment logs above for details."
+        exit 1
