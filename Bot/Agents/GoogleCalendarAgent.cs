@@ -5,11 +5,11 @@
 //using System.Threading;
 //using System.Threading.Tasks;
 
-namespace demo-M365-agent.Bot.Agents
+namespace demoM365agent.Bot.Agents
 {
     public class GoogleCalendarAgent
-{
-}
+    {
+    }
 }
 
 

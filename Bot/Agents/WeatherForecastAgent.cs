@@ -1,4 +1,4 @@
-﻿using demo_M365_agent.Bot.Plugins;
+﻿using demoM365Agent.Bot.Plugins;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
 using Microsoft.SemanticKernel.ChatCompletion;
@@ -6,7 +6,7 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 using System.Text;
 using System.Text.Json.Nodes;
 
-namespace demo_M365_agent.Bot.Agents;
+namespace demoM365Agent.Bot.Agents;
 
 public class WeatherForecastAgent
 {

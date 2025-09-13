@@ -1,4 +1,4 @@
-namespace demo_M365_agent
+namespace demoM365Agent
 {
     public class ConfigOptions
     {

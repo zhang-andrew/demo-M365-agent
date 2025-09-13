@@ -1,5 +1,5 @@
-using demo_M365_agent;
-using demo_M365_agent.Bot.Agents;
+using demoM365Agent;
+using demoM365Agent.Bot.Agents;
 using Microsoft.Agents.Builder;
 using Microsoft.Agents.Builder.App;
 using Microsoft.Agents.Hosting.AspNetCore;
@@ -44,7 +44,7 @@ builder.AddAgentApplicationOptions();
 builder.Services.AddTransient<AgentApplicationOptions>();
 
 // Add the bot (which is transient)
-builder.AddAgent<demo_M365_agent.Bot.WeatherAgentBot>();
+builder.AddAgent<demoM365Agent.Bot.WeatherAgentBot>();
 
 WebApplication app = builder.Build();
 

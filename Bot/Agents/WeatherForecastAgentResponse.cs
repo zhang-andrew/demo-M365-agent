@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
 
-namespace demo_M365_agent.Bot.Agents;
+namespace demoM365Agent.Bot.Agents;
 
 public enum WeatherForecastAgentResponseContentType
 {

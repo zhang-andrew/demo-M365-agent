@@ -2,7 +2,7 @@
 using Microsoft.SemanticKernel.ChatCompletion;
 using System.Threading.Tasks;
 
-namespace demo_M365_agent.Bot.Plugins;
+namespace demoM365Agent.Bot.Plugins;
 
 public class AdaptiveCardPlugin
 {

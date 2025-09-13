@@ -1,4 +1,4 @@
-﻿using demo_M365_agent.Bot.Agents;
+﻿using demoM365Agent.Bot.Agents;
 using Microsoft.Agents.Builder;
 using Microsoft.Agents.Builder.App;
 using Microsoft.Agents.Builder.State;
@@ -8,7 +8,7 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 
-namespace demo_M365_agent.Bot;
+namespace demoM365Agent.Bot;
 
 public class WeatherAgentBot : AgentApplication
 {

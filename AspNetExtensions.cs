@@ -16,7 +16,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace demo_M365_agent;
+namespace demoM365Agent;
 
 public static class AspNetExtensions
 {
