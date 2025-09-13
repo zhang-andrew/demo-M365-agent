@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "botId": {
+            "value": "demo-M365-agent-bot"
+        },
+        "sku": {
+            "value": "F0"
+        },
+        "appType": {
+            "value": "SingleTenant"
+        },
+        "msAppId": {
+            "value": "e706ee2b-8440-463a-997c-6bd1accf6063"
+        },
+        "tenantId": {
+            "value": "a4585891-a118-4be0-9925-6bad6de1e7a7"
+        },
+        "msiResourceId": {
+            "value": ""
+        },
+        "displayName": {
+            "value": ""
+        },
+        "resourceTags": {
+            "value": {}
+        },
+        "region": {
+            "value": "global"
+        },
+        "secretContentType": {
+            "value": ""
+        }
+    }
+}
