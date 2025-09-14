@@ -39,7 +39,7 @@ jobs:
         template: ${{ env.TEMPLATE_FILE }}
         parameters: ${{ env.PARAMETERS_FILE }}
         deploymentMode: Incremental
-        validateOnly: false   # skip validation step to avoid content already consumed error with GitHub action and az deployment
+        deploymentName: 'bot-deployment-${{ github.run_number }}'
         
     - name: Post deployment validation
       run: |

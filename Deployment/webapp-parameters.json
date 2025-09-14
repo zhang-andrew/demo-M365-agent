@@ -9,7 +9,7 @@
             "value": "ASP-demoM365agentRG-a13e"
         },
         "existingAppServicePlanLocation": {
-            "value": "Australia Southeast"
+            "value": "australiasoutheast"
         },
         "newAppServicePlanName": {
             "value": ""
