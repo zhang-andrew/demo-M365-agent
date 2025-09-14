@@ -27,8 +27,8 @@ jobs:
       id: deploy
       with:        
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
-        template: ./Deployment/bot-template.json
-        parameters: ./Deployment/bot-parameters.json
+        template: ./Deployment/webapp-template.json
+        parameters: ./Deployment/webapp-parameters.json
         # subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         # deploymentName: 'bot-deployment-${{ github.run_number }}'
 

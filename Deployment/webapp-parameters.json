@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appServiceName": {
-            "value": ""
+            "value": "demo-M365-agent-webapp"
         },
         "existingAppServicePlanName": {
             "value": "ASP-demoM365agentRG-a13e"
