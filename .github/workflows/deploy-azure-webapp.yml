@@ -22,16 +22,26 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Validate ARM Template
-      run: |
-        az deployment group validate \
-          --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
-          --template-file ${{ env.TEMPLATE_FILE }} \
-          --parameters "@${{ env.PARAMETERS_FILE }}"
+    - name: Deploy ARM Template
+      uses: azure/arm-deploy@v1
+      id: deploy
+      with:        
+        resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+        template: ./Deployment/bot-template.json
+        parameters: ./Deployment/bot-parameters.json
+        # subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        # deploymentName: 'bot-deployment-${{ github.run_number }}'
+
+    # - name: Validate ARM Template
+    #   run: |
+    #     az deployment group validate \
+    #       --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+    #       --template-file ${{ env.TEMPLATE_FILE }} \
+    #       --parameters "@${{ env.PARAMETERS_FILE }}"
     
-    - name: Deploy ARM Template (Azure Webapp)
-      run: |
-        az deployment group create \
-          --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
-          --template-file ${{ env.TEMPLATE_FILE }} \
-          --parameters "@${{ env.PARAMETERS_FILE }}"
+    # - name: Deploy ARM Template (Azure Webapp)
+    #   run: |
+    #     az deployment group create \
+    #       --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+    #       --template-file ${{ env.TEMPLATE_FILE }} \
+    #       --parameters "@${{ env.PARAMETERS_FILE }}"
