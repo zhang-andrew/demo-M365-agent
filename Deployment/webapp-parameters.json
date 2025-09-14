@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appServiceName": {
-            "value": "demo-M365-agent-webapp"
+            "value": "demo-M365-agent-webapp" // Required
         },
         "existingAppServicePlanName": {
             "value": "ASP-demoM365agentRG-a13e"
@@ -30,16 +30,16 @@
             "value": "SingleTenant"
         },
         "appId": {
-            "value": "e706ee2b-8440-463a-997c-6bd1accf6063"
+            "value": "e706ee2b-8440-463a-997c-6bd1accf6063" // application client id
         },
         "appSecret": {
             "value": "khf8Q~wBpOnP6zvnTJHgktlywM9M5rki2II2Sazt"
         },
         "UMSIName": {
-            "value": ""
+            "value": "" // Not required for singleTenant appType
         },
         "UMSIResourceGroupName": {
-            "value": ""
+            "value": "" // Not required for singleTenant appType
         },
         "tenantId": {
             "value": "a4585891-a118-4be0-9925-6bad6de1e7a7"
