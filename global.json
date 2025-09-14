@@ -1,0 +1,5 @@
+{
+    "msbuild-sdks": {
+        "Microsoft.TeamsFx.Sdk": "3.0.0"
+    }
+}
