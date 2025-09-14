@@ -1,36 +1,33 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "botId": {
-            "value": "demo-M365-agent-bot"
+        "azureBotId": {
+            "value": "e706ee2b-8440-463a-997c-6bd1accf6063"
         },
-        "sku": {
-            "value": "F0"
+        "azureBotSku": {
+            "value": "F0" // S1
+        },
+        "azureBotRegion": {
+            "value": "global"
+        },
+        "botEndpoint": {
+            "value": "https://.azurewebsites.net/api/messages"
         },
         "appType": {
             "value": "SingleTenant"
         },
-        "msAppId": {
-            "value": "e706ee2b-8440-463a-997c-6bd1accf6063" // application client id
+        "appId": {
+            "e706ee2b-8440-463a-997c-6bd1accf6063" // application client id
+        },
+        "UMSIName": {
+            "value": "" // Not required for singleTenant appType
+        },
+        "UMSIResourceGroupName": {
+            "value": "" // Not required for singleTenant appType
         },
         "tenantId": {
             "value": "a4585891-a118-4be0-9925-6bad6de1e7a7"
-        },
-        "msiResourceId": {
-            "value": ""
-        },
-        "displayName": {
-            "value": ""
-        },
-        "resourceTags": {
-            "value": {}
-        },
-        "region": {
-            "value": "global"
-        },
-        "secretContentType": {
-            "value": ""
         }
     }
 }

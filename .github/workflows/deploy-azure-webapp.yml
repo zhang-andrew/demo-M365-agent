@@ -3,7 +3,7 @@ name: Deploy Web App with ARM Template
 on:
   push:
     branches:
-    - disabled #prod
+    - prod
   workflow_dispatch:
 
 env:
