@@ -1,0 +1,30 @@
+name: Deploy Web App with ARM Template
+
+on:
+  push:
+    branches:
+    - prod
+  workflow_dispatch:
+
+env:
+  AZURE_RESOURCE_GROUP: 'demo-M365-agent-RG'
+  TEMPLATE_FILE: 'Deployment/webapp-template.json'
+  PARAMETERS_FILE: 'Deployment/webapp-parameters.json'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Deploy ARM Template (Azure Webapp)
+      run: |
+        az deployment group create \
+          --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+          --template-file ${{ env.TEMPLATE_FILE }} \
+          --parameters "@${{ env.PARAMETERS_FILE }}"

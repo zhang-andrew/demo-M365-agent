@@ -12,7 +12,7 @@
             "value": "SingleTenant"
         },
         "msAppId": {
-            "value": "e706ee2b-8440-463a-997c-6bd1accf6063"
+            "value": "e706ee2b-8440-463a-997c-6bd1accf6063" // application client id
         },
         "tenantId": {
             "value": "a4585891-a118-4be0-9925-6bad6de1e7a7"

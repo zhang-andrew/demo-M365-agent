@@ -6,10 +6,10 @@
             "value": ""
         },
         "existingAppServicePlanName": {
-            "value": ""
+            "value": "ASP-demoM365agentRG-a13e"
         },
         "existingAppServicePlanLocation": {
-            "value": ""
+            "value": "Australia Southeast"
         },
         "newAppServicePlanName": {
             "value": ""
@@ -30,10 +30,10 @@
             "value": "SingleTenant"
         },
         "appId": {
-            "value": ""
+            "value": "e706ee2b-8440-463a-997c-6bd1accf6063"
         },
         "appSecret": {
-            "value": ""
+            "value": "khf8Q~wBpOnP6zvnTJHgktlywM9M5rki2II2Sazt"
         },
         "UMSIName": {
             "value": ""
@@ -42,7 +42,7 @@
             "value": ""
         },
         "tenantId": {
-            "value": ""
+            "value": "a4585891-a118-4be0-9925-6bad6de1e7a7"
         }
     }
 }
