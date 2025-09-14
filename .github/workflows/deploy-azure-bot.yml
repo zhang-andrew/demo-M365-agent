@@ -2,13 +2,11 @@ name: Deploy Azure Bot
 
 on:
   push:
-    branches: [ main ]
+    branches: [ prod ]
     paths:
       - 'Deployment/bot-template.json'
       - 'Deployment/bot-parameters.json'
       - '.github/workflows/deploy-azure-bot.yml'
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:  # Allows manual trigger
 
 env:
@@ -19,9 +17,6 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy Azure Bot
-    if: github.ref == 'refs/heads/main'
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -33,8 +28,8 @@ jobs:
         
     - name: Deploy ARM Template
       uses: azure/arm-deploy@v2
-      with:
-        scope: resourcegroup
+      id: deploy
+      with: 
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
         template: ${{ env.TEMPLATE_FILE }}
         parameters: ${{ env.PARAMETERS_FILE }}
