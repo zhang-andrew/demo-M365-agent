@@ -6,7 +6,7 @@
             "value": "e706ee2b-8440-463a-997c-6bd1accf6063"
         },
         "azureBotSku": {
-            "value": "F0" // S1
+            "value": "S1" // "F0" free-tier // S1 default-tier (this might be required)
         },
         "azureBotRegion": {
             "value": "global"
