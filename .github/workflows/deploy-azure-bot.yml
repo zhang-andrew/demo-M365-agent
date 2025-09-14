@@ -13,6 +13,8 @@ on:
 
 env:
   AZURE_RESOURCE_GROUP: 'demo-M365-agent-RG'
+  TEMPLATE_FILE: './Deployment/bot-template.json'
+  PARAMETERS_FILE: './Deployment/bot-parameters.json'
 
 jobs:
   validate:
@@ -33,8 +35,8 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
-        template: ./Deployment/bot-template.json
-        parameters: ./Deployment/bot-parameters.json
+        template: ${{ env.TEMPLATE_FILE }}
+        parameters: ${{ env.PARAMETERS_FILE }}
         deploymentMode: Validate
 
   deploy:
@@ -58,8 +60,8 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
-        template: ./Deployment/bot-template.json
-        parameters: ./Deployment/bot-parameters.json
+        template: ${{ env.TEMPLATE_FILE }}
+        parameters: ${{ env.PARAMETERS_FILE }}
         deploymentName: 'bot-deployment-${{ github.run_number }}'
         
     - name: Get Deployment Outputs
