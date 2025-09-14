@@ -34,7 +34,7 @@ jobs:
     - name: Deploy ARM Template
       uses: azure/arm-deploy@v2
       with:
-        scope: resourceGroup
+        scope: resourcegroup
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
         template: ${{ env.TEMPLATE_FILE }}
         parameters: ${{ env.PARAMETERS_FILE }}
