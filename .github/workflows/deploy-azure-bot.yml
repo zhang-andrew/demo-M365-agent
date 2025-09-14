@@ -34,7 +34,7 @@ jobs:
     - name: Deploy ARM Template
       uses: azure/cli@v1
       with:
-        azcliversion: '2.64.0'  # latest stable
+        azcliversion: '2.77.0'  # latest stable https://github.com/azure/azure-cli/releases
         inlineScript: |
           az deployment group create \
             --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
