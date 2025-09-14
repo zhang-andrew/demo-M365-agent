@@ -3,7 +3,7 @@ name: Deploy Web App with ARM Template
 on:
   push:
     branches:
-    - main
+    - disabled
   workflow_dispatch:
 
 env:
@@ -14,6 +14,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    name: Deploy Azure Webapp
     steps:
     - uses: actions/checkout@v4
     
