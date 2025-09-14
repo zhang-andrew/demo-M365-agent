@@ -9,7 +9,7 @@
             "value": "S1" // "F0" free-tier // S1 default-tier (this might be required)
         },
         "azureBotRegion": {
-            "value": "australiasoutheast"
+            "value": "global" // valid values are only global and westeurope
         },
         "botEndpoint": {
             "value": "https://demo-m365-agent-webapp-a9hzftgtf9h7b6ff.australiasoutheast-01.azurewebsites.net/api/messages"
