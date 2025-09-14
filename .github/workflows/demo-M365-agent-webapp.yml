@@ -2,7 +2,7 @@ name: Build and deploy .NET Core application to Web App demo-M365-agent-webapp
 on:
   push:
     branches:
-    - disabled # prod # main
+    - prod # main
 env:
   AZURE_WEBAPP_NAME: demo-M365-agent-webapp
   AZURE_WEBAPP_PACKAGE_PATH: .\published
