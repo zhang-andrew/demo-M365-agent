@@ -80,23 +80,3 @@ jobs:
           echo "? Bot service not found"
           exit 1
         fi
-
-  notify:
-    runs-on: ubuntu-latest
-    needs: [deploy]
-    if: always()
-    name: Notify Deployment Status
-    
-    steps:
-    - name: Deployment Success
-      if: needs.deploy.result == 'success'
-      run: |
-        echo "?? Azure Bot deployed successfully!"
-        echo "Resource Group: ${{ env.AZURE_RESOURCE_GROUP }}"
-        
-    - name: Deployment Failed  
-      if: needs.deploy.result == 'failure'
-      run: |
-        echo "?? Azure Bot deployment failed!"
-        echo "Check the deployment logs above for details."
-        exit 1
