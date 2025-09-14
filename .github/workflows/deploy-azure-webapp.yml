@@ -8,8 +8,8 @@ on:
 
 env:
   AZURE_RESOURCE_GROUP: 'demo-M365-agent-RG'
-  TEMPLATE_FILE: 'Deployment/webapp-template.json'
-  PARAMETERS_FILE: 'Deployment/webapp-parameters.json'
+  TEMPLATE_FILE: './Deployment/webapp-template.json'
+  PARAMETERS_FILE: './Deployment/webapp-parameters.json'
 
 jobs:
   deploy:
@@ -27,8 +27,10 @@ jobs:
       id: deploy
       with:        
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
-        template: ./Deployment/webapp-template.json
-        parameters: ./Deployment/webapp-parameters.json
+        template: ${{ env.TEMPLATE_FILE }}
+        parameters: ${{ env.PARAMETERS_FILE }}
+        deploymentName: 'webapp-deployment-${{ github.run_number }}'
+
         # subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         # deploymentName: 'bot-deployment-${{ github.run_number }}'
 
