@@ -32,13 +32,15 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
     - name: Deploy ARM Template
-      uses: azure/arm-deploy@v2
+      uses: azure/cli@v1
       with:
-        scope: resourcegroup
-        resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
-        template: ${{ env.TEMPLATE_FILE }}
-        parameters: ${{ env.PARAMETERS_FILE }}
-        deploymentMode: Incremental
+        azcliversion: '2.64.0'  # latest stable
+        inlineScript: |
+          az deployment group create \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --template-file ${{ env.TEMPLATE_FILE }} \
+            --parameters ${{ env.PARAMETERS_FILE }} \
+            --mode Incremental
         
     - name: Post deployment validation
       run: |
